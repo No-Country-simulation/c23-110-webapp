@@ -1,8 +1,14 @@
-function App() {
+import LoginForm from "./components/LoginForm"
 
+function App() {
   return (
     <>
-      <h1>INICIALIZANDO PROYECTO</h1>
+      <main className="w-screen h-screen">
+        <section className="bg-login bg-top bg-fixed bg-no-repeat w-full h-full flex justify-center items-center max-[639px]:bg-start relative">
+          <div className="absolute inset-0 bg-black bg-opacity-50 blur-3xl"></div>
+          <LoginForm />
+        </section>
+      </main>
     </>
   )
 }
