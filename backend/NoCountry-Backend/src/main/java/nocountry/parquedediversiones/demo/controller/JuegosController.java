@@ -1,7 +1,8 @@
 package nocountry.parquedediversiones.demo.controller;
 
+import nocountry.parquedediversiones.demo.dtos.JuegosDTO;
 import nocountry.parquedediversiones.demo.entities.Juegos;
-import nocountry.parquedediversiones.demo.service.JuegoService;
+import nocountry.parquedediversiones.demo.service.implement.JuegosServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,15 +14,15 @@ import java.util.List;
 public class JuegosController {
 
     @Autowired
-    private JuegoService juegoService;
+    private JuegosServiceImpl juegoService;
 
     @GetMapping
-    public List<Juegos> getAllJuegos() {
+    public List<JuegosDTO> getAllJuegos() {
         return juegoService.findAll();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Juegos> getJuegosById(@PathVariable Long id) {
+    public ResponseEntity<JuegosDTO> getJuegosById(@PathVariable Long id) {
         return ResponseEntity.ok(juegoService.findById(id));
     }
 
