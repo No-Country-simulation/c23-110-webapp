@@ -5,8 +5,6 @@ import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.math.BigDecimal;
-import java.util.HashSet;
-import java.util.Set;
 
 @Setter
 @Getter
@@ -14,24 +12,22 @@ import java.util.Set;
 @NoArgsConstructor
 @Entity
 @Builder
-@Table(name = "juegos")
-public class Juegos {
+@Table(name = "entradas")
+public class Entradas {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
     private Long id;
 
-    @Column(nullable = false, unique = true)
-    private String nombre;
+    private int cantidad;
+    private BigDecimal precioTotal;
 
-    @Column(nullable = false)
-    private String horario;
+    @ManyToOne
+    @JoinColumn(name = "juego_id", nullable = false)
+    private Juegos juego;
 
-    @Column(nullable = false)
-    private BigDecimal precio;
-
-    @Builder.Default
-    @OneToMany(mappedBy = "juego", cascade = CascadeType.ALL)
-    private Set<Entradas> entradas = new HashSet<>();
+    @ManyToOne
+    @JoinColumn(name = "venta_id")
+    private Venta venta;
 }

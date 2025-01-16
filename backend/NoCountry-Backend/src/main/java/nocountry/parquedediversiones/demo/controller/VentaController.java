@@ -1,7 +1,9 @@
 package nocountry.parquedediversiones.demo.controller;
 
+import nocountry.parquedediversiones.demo.dtos.VentaDTO;
 import nocountry.parquedediversiones.demo.entities.Venta;
 import nocountry.parquedediversiones.demo.service.VentaService;
+import nocountry.parquedediversiones.demo.service.implement.VentaServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,10 +15,10 @@ import java.util.List;
 public class VentaController {
 
     @Autowired
-    private VentaService ventaService;
+    private VentaServiceImpl ventaService;
 
     @GetMapping
-    public List<Venta> getAllVentas() {
+    public List<VentaDTO> getAllVentas() {
         return ventaService.findAll();
     }
 
