@@ -1,5 +1,6 @@
 package nocountry.parquedediversiones.demo.service.implement;
 
+import nocountry.parquedediversiones.demo.dtos.VentaDTO;
 import nocountry.parquedediversiones.demo.entities.Venta;
 import nocountry.parquedediversiones.demo.repository.VentaRepository;
 import nocountry.parquedediversiones.demo.service.VentaService;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class VentaServiceImpl implements VentaService {
@@ -15,8 +17,13 @@ public class VentaServiceImpl implements VentaService {
     private VentaRepository ventaRepository;
 
     @Override
-    public List<Venta> findAll() {
-        return ventaRepository.findAll();
+    public List<VentaDTO> findAll() {
+
+        return ventaRepository.findAll()
+                .stream()
+                .map(venta -> new VentaDTO(
+                        venta
+                )).collect(Collectors.toList());
     }
 
     @Override
@@ -34,9 +41,8 @@ public class VentaServiceImpl implements VentaService {
     public Venta update(Long id, Venta venta) {
         Venta existingVenta = findById(id);
         existingVenta.setMetodoDePago(venta.getMetodoDePago());
-        existingVenta.setCantidad(venta.getCantidad());
         existingVenta.setFechaDeCompra(venta.getFechaDeCompra());
-        existingVenta.setJuegos(venta.getJuegos());
+        existingVenta.setEntradas(venta.getEntradas());
         return ventaRepository.save(existingVenta);
     }
 

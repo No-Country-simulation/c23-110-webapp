@@ -1,22 +1,18 @@
 package nocountry.parquedediversiones.demo.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import nocountry.parquedediversiones.demo.enums.MetodoEnum;
 import org.hibernate.annotations.GenericGenerator;
 
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Setter
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Builder
 @Table(name = "venta")
 public class Venta {
     @Id
@@ -28,12 +24,9 @@ public class Venta {
 //    private Usuario usuario;
 
     private MetodoEnum metodoDePago;
-    private int cantidad;
     private Date fechaDeCompra;
 
-    @ManyToMany
-    @JoinTable(name = "venta_juego",
-                joinColumns = @JoinColumn(name = "venta_id"),
-                inverseJoinColumns = @JoinColumn(name = "juego_id"))
-    private Set<Juegos> juegos = new HashSet<>();
+    @Builder.Default
+    @OneToMany(mappedBy = "venta", cascade = CascadeType.ALL)
+    private Set<Entradas> entradas = new HashSet<>();
 }
