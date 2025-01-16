@@ -6,28 +6,28 @@ export default function useAuth(){
 
     // Validar usuario
     const authUser = async({ user, pass }: { user: string, pass: string })=>{
-        const dataUpdate = {
-            user: user,
-            pass: pass
-        }
+        try {
+            const dataUpdate = { username: user, password: pass }
 
-        const dataOptions = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(dataUpdate)
-            
-        }
-
-        const rq = await fetch('url/api/users', dataOptions)
-        const dt = await rq.json()
-
-        if (dt.auth) {
-            dispatch({type: 'auth-login', payload: {id: dt.id, user: user, role: dt.role}})
+            const rq = await fetch('https://cbec-2607-fea8-5864-4000-f0c3-2a2d-d199-6dbc.ngrok-free.app/api/login', {
+                method: 'POST',
+                mode: 'cors',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                },
+                body: JSON.stringify(dataUpdate)
+            })
+            const dt = await rq.json()
+            console.log(dt)
+            dispatch({ type: 'auth-login', payload: {user: user, id: dt.id, role: dt.rol} })
             return true
         }
-        else return false
+        catch (err){
+            console.log(err)
+            return false
+        }
     }
     
     // Retorno de valores

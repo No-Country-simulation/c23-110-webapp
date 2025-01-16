@@ -18,16 +18,14 @@ export default function LoginForm() {
   const handleSubmit = async(e: React.FormEvent)=>{
     e.preventDefault()
     setLoading(true)
-    // Ejecutar la siguiente line cuando el useAuth este completo
-    // const authRes = await authUser({ user: formData.user, pass: formData.pass })
-    // if (!authRes) notifyError("Credenciales inválidas, por favor intenta nuevamente.")
-
+    const authRes: boolean = await authUser({ user: formData.user, pass: formData.pass })
+    if (!authRes) notifyError("Credenciales inválidas, por favor intenta nuevamente.")
+    setLoading(false)
 
     // Codigo de prueba
-    setTimeout(()=>setLoading(false), 1000)
-    notifyError("Credenciales inválidas, por favor intenta nuevamente.")
+    //setTimeout(()=>setLoading(false), 1000)
+    //notifyError("Credenciales inválidas, por favor intenta nuevamente.")
   }
-
 
   // Validaciones de entrada
   const handleChangeUser = (e: React.ChangeEvent<HTMLInputElement>)=> {
