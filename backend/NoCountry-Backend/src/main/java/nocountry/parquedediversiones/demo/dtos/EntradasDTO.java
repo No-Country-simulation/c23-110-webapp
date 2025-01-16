@@ -15,7 +15,7 @@ public class EntradasDTO {
     private Long id;
     private int cantidad;
     private BigDecimal precioTotal;
-    private String nombreJuego ;
+    private JuegosDTO juegos ;
 
     public EntradasDTO(Entradas entradas) {
         this.id = entradas.getId();
