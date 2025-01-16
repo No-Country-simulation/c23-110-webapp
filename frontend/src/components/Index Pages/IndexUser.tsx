@@ -1,5 +1,5 @@
 import { Bars3Icon, MagnifyingGlassIcon, TrashIcon, PhoneIcon, Cog8ToothIcon, PlusIcon, ClockIcon, PowerIcon, ArrowPathIcon } from '@heroicons/react/24/solid';
-import ButtonGeneral, { ButtonOrder } from './ButtonGeneral';
+import ButtonGeneral, { ButtonOrder } from './Elements/ButtonGeneral';
 import useAuth from '../../hooks/useAuth';
 import { useEffect, useMemo, useState } from 'react';
 
@@ -112,6 +112,6 @@ export default function IndexUser() {
         </section>  
       </main>
     </>
-  );
+  )
 }
 

@@ -5,54 +5,56 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 /*--------------ANIMATIONS INDEXPAGE-----------------*/
-.button-action {
-    opacity: 0;
-    animation: itemAppearsFromBottom .5s ease-out forwards;
-}
-.button-action:nth-child(2) {
-    animation-delay: .2s;
-}
-.button-action:nth-child(3) {
-    animation-delay: .4s;
-}
-
-.aside__order--section {
-    opacity: 0;
-    animation: itemAppearsFromLeft .3s ease-out forwards;
-}
-.aside__order--section:nth-child(2) {
-    animation-delay: .2s;
-}
-
-#welcome__page {
-	border-right: .1em solid black;
-	white-space: nowrap;
-	overflow: hidden;
-}
-#welcome__page.end {
-    border: none;
-}
-
-
-@keyframes itemAppearsFromBottom {
-    from {
+@layer {
+    .button-action {
         opacity: 0;
-        transform: translateY(20px);
-    }to {
-        opacity: 1;
-        transform: translateY(0px);
+        animation: itemAppearsFromBottom .5s ease-out forwards;
     }
-}
-
-@keyframes itemAppearsFromLeft {
-    from {
+    .button-action:nth-child(2) {
+        animation-delay: .2s;
+    }
+    .button-action:nth-child(3) {
+        animation-delay: .4s;
+    }
+    
+    .aside__order--section {
         opacity: 0;
-        transform: translateX(-20px);
-    }to {
-        opacity: 1;
-        transform: translateX(0px);
+        animation: itemAppearsFromLeft .3s ease-out forwards;
     }
+    .aside__order--section:nth-child(2) {
+        animation-delay: .2s;
+    }
+    
+    #welcome__page {
+        border-right: .1em solid black;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+    #welcome__page.end {
+        border: none;
+    }
+    
+    
+    @keyframes itemAppearsFromBottom {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }to {
+            opacity: 1;
+            transform: translateY(0px);
+        }
+    }
+    
+    @keyframes itemAppearsFromLeft {
+        from {
+            opacity: 0;
+            transform: translateX(-20px);
+        }to {
+            opacity: 1;
+            transform: translateX(0px);
+        }
+    }
+    
+    @keyframes typing { from { width: 0; } }
+    @keyframes blink-caret { 50% { border-color: transparent; } }
 }
-
-@keyframes typing { from { width: 0; } }
-@keyframes blink-caret { 50% { border-color: transparent; } }

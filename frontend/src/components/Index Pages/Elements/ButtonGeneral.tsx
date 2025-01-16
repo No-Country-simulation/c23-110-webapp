@@ -18,7 +18,7 @@ type ButtonOrderProps = {
 
 export default function ButtonGeneral({text, Icon, stroke = true, w = "7"}: ButtonGeneralProps) {
     return (
-      <button className="w-full hover:bg-[rgba(255,255,255,.3)] p-2 rounded-md transition-all duration-200 flex items-center gap-2 text-white font-semibold">
+      <button className="w-full hover:bg-[rgba(255,255,255,.3)] focus:bg-[rgba(255,255,255,.3)] active:scale-95  p-2 rounded-md transition-all duration-200 flex items-center gap-2 text-white font-semibold">
         {Icon && <Icon className={`w-${w} text-gray-100 ${stroke ? "stroke-current" : "stroke-none"}`} />}
         {text}
       </button>
