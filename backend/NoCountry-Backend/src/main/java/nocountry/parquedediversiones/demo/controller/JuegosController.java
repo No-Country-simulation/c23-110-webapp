@@ -22,7 +22,7 @@ public class JuegosController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Juegos> getJuegosById(@PathVariable Long id) {
+    public ResponseEntity<JuegosDTO> getJuegosById(@PathVariable Long id) {
         return ResponseEntity.ok(juegoService.findById(id));
     }
 
