@@ -19,6 +19,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/")
+@CrossOrigin(origins = "https://cbec-2607-fea8-5864-4000-f0c3-2a2d-d199-6dbc.ngrok-free.app")
 @RequiredArgsConstructor
 public class UserController {
 
@@ -28,16 +29,17 @@ public class UserController {
 
     @PostMapping("/usuarios")
     @Transactional
-    public ResponseEntity<UserResponse> createUser(@RequestBody Usuario user) {
-        if (userRepository.findByEmail(user.getNombre()).isPresent()) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body(null);
+    public ResponseEntity<?> createUser(@RequestBody Usuario user) {
+        if (userRepository.findByNombre(user.getNombre()).isPresent()) {
+            return ResponseEntity.status(HttpStatus.CONFLICT)
+                    .body("Ya esta en uso el nombre");
         }
         user.setContraseña(passwordEncoder.encode(user.getContraseña()));
         Usuario savedUser = userRepository.save(user);
 
         UserResponse response = new UserResponse(
                 savedUser.getNombre(),
-                savedUser.getEmail(),
+               // savedUser.getEmail(),
                 savedUser.getRol().name()
         );
         return ResponseEntity.ok(response);
@@ -48,7 +50,7 @@ public class UserController {
         return userRepository.findAll().stream()
                 .map(user -> new UserResponse(
                         user.getNombre(),
-                        user.getEmail(),
+                       // user.getEmail(),
                         user.getRol().name()
                 ))
                 .collect(Collectors.toList());

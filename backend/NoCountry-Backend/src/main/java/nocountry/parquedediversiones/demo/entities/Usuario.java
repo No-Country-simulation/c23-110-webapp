@@ -20,8 +20,8 @@ public class Usuario {
     @Column(name = "nombre", nullable = false, unique = true)
     private String nombre;
 
-    @Column(name = "email", nullable = false)
-    private String email;
+//    @Column(name = "email", nullable = false)
+//    private String email;
 
     @Column(name = "contraseña", nullable = false)
     private String contraseña;
