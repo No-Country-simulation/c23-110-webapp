@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface JuegoService {
     List<JuegosDTO> findAll();
-    Juegos findById(Long id);
+    JuegosDTO findById(Long id);
     Juegos save (Juegos juegos );
     Juegos update(Long id, Juegos juegos);
     void deleteById(Long id);

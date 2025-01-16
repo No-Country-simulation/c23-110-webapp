@@ -26,9 +26,10 @@ public class JuegosServiceImpl implements JuegoService {
     }
 
     @Override
-    public Juegos findById(Long id) {
-        return juegosRepository.findById(id)
+    public JuegosDTO findById(Long id) {
+        Juegos juegos = juegosRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Juego no encontrado con id: " + id));
+        return new JuegosDTO(juegos);
     }
 
     @Override
@@ -38,12 +39,12 @@ public class JuegosServiceImpl implements JuegoService {
 
     @Override
     public Juegos update(Long id, Juegos juegos) {
-        Juegos updateJuegos = findById(id);
+        /*Juegos updateJuegos = findById(id);
         updateJuegos.setNombre(juegos.getNombre());
         updateJuegos.setHorario(juegos.getHorario());
         updateJuegos.setEntradas(juegos.getEntradas());
-        updateJuegos.setPrecio(juegos.getPrecio());
-        return juegosRepository.save(updateJuegos);
+        updateJuegos.setPrecio(juegos.getPrecio());*/
+        return null/*juegosRepository.save(updateJuegos)*/;
     }
 
     @Override
