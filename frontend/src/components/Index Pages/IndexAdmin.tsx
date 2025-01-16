@@ -2,9 +2,11 @@ import { Bars3Icon, MagnifyingGlassIcon, TrashIcon, Cog8ToothIcon, ChartPieIcon,
 import ButtonGeneral, { ButtonOrder } from './Elements/ButtonGeneral.tsx';
 import useAuth from '../../hooks/useAuth.ts';
 import { useEffect, useMemo, useState } from 'react';
+import AddEmpModal from './IndexAdminLib/AddEmpModal.tsx';
 
 export default function IndexAdmin() {
   const { state } = useAuth()
+  const [section, setSection] = useState('index')
   const [loading, setLoading] = useState({
     orders: false
   })
@@ -42,7 +44,7 @@ export default function IndexAdmin() {
 
             {/* ASIDE. OPCIONES */}
             <section className="space-y-3">
-              <ButtonGeneral text="Añadir usuario." Icon={UserPlusIcon} stroke={false} />
+              <ButtonGeneral text="Añadir usuario." Icon={UserPlusIcon} stroke={false} func={()=>setSection('addEmp')} />
               <ButtonGeneral text="Configuración." Icon={Cog8ToothIcon} stroke={false} />
             </section>
           </nav>
@@ -80,7 +82,9 @@ export default function IndexAdmin() {
         </aside>
 
         {/* MAIN */}
-        <section className="flex flex-grow flex-col justify-center items-center gap-7">
+        {
+          section == 'index' &&
+          <section className="flex flex-grow flex-col justify-center items-center gap-7">
           <div className="w-full flex justify-center items-center">
             <h1 className="text-3xl font-semibold text-gray-800 font-montserrat" style={{
               width: `${welcome.length}ch` ,
@@ -109,7 +113,13 @@ export default function IndexAdmin() {
               <span className="text-lg text-center">CERRAR SESIÓN</span>
             </button>
           </div>
-        </section>  
+        </section>
+        } 
+
+        {
+          section == 'addEmp' &&
+          <AddEmpModal />
+        } 
       </main>
     </>
   )
