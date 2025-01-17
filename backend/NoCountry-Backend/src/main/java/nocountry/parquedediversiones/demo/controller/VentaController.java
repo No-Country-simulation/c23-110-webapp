@@ -6,6 +6,7 @@ import nocountry.parquedediversiones.demo.service.VentaService;
 import nocountry.parquedediversiones.demo.service.implement.VentaServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -38,6 +39,7 @@ public class VentaController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Void> deleteVenta(@PathVariable Long id) {
         ventaService.deleteById(id);
         return ResponseEntity.noContent().build();
