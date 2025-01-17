@@ -30,8 +30,4 @@ public class Juegos {
 
     @Column(nullable = false)
     private BigDecimal precio;
-
-    @Builder.Default
-    @OneToMany(mappedBy = "juego", cascade = CascadeType.ALL)
-    private Set<Entradas> entradas = new HashSet<>();
 }
