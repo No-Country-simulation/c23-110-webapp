@@ -23,8 +23,8 @@ public class Usuario {
 //    @Column(name = "email", nullable = false)
 //    private String email;
 
-    @Column(name = "contraseña", nullable = false)
-    private String contraseña;
+    @Column(name = "contrasena", nullable = false)
+    private String contrasena;
 
 //    @OneToOne(mappedBy = "Usuario")
 //    private Venta venta;
