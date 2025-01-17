@@ -21,6 +21,6 @@ public class EntradasDTO {
         this.id = entradas.getId();
         this.cantidad = entradas.getCantidad();
         this.precioTotal = entradas.getPrecioTotal();
-        this.juegos = new JuegosDTO(entradas.getJuego());
+        this.nombreJuego = entradas.getJuego().getNombre();
     }
 }

@@ -39,13 +39,12 @@ public class JuegosServiceImpl implements JuegoService {
 
     @Override
     public Juegos update(Long id, Juegos juegos) {
-        Juegos updateJuegos = juegosRepository.findById(id).orElseThrow(()-> new RuntimeException("Juego no encontrado"));
-
+        /*Juegos updateJuegos = findById(id);
         updateJuegos.setNombre(juegos.getNombre());
         updateJuegos.setHorario(juegos.getHorario());
-        updateJuegos.setPrecio(juegos.getPrecio());
-
-        return juegosRepository.save(updateJuegos);
+        updateJuegos.setEntradas(juegos.getEntradas());
+        updateJuegos.setPrecio(juegos.getPrecio());*/
+        return null/*juegosRepository.save(updateJuegos)*/;
     }
 
     @Override

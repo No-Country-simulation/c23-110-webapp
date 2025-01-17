@@ -22,13 +22,10 @@ public class DemoApplication {
 		SpringApplication.run(DemoApplication.class, args);
 	}
 
-/*
 	@Bean
 	CommandLineRunner init(VentaRepository ventaRespository, JuegosRepository juegosRepository, EntradasRespository entradasRespository){
 		return args -> {
-			*/
-/* Juegos *//*
-
+			/* Juegos */
 			Juegos montañaRusa = Juegos.builder()
 					.nombre("Montaña Rusa")
 					.horario("16:00 ~ 18:00")
@@ -45,9 +42,7 @@ public class DemoApplication {
 			juegosRepository.save(montañaRusa);
 			juegosRepository.save(calesita);
 
-			*/
-/* Venta *//*
-
+			/* Venta */
 			Venta venta1 = Venta.builder()
 					.metodoDePago(MetodoEnum.EFECTIVO)
 					.fechaDeCompra(new Date())
@@ -55,9 +50,7 @@ public class DemoApplication {
 
 			ventaRespository.save(venta1);
 
-			*/
-/* Entradas *//*
-
+			/* Entradas */
 			Entradas entradas1 = Entradas.builder()
 					.cantidad(2)
 					.precioTotal(montañaRusa.getPrecio().multiply(BigDecimal.valueOf(2)))
@@ -76,6 +69,5 @@ public class DemoApplication {
 			entradasRespository.save(entradas2);
 		};
 	}
-*/
 
 }
