@@ -30,4 +30,9 @@ public class Juegos {
 
     @Column(nullable = false)
     private BigDecimal precio;
+
+    private int cantidad;
+    private BigDecimal precioTotal;
+
+    private Boolean juegoActivo;
 }

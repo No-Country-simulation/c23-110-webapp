@@ -19,6 +19,7 @@ public class Venta {
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
     private Long id;
+
 //    @ManyToOne
 //    @JoinColumn(name = "usuario_id", nullable = false)
 //    private Usuario usuario;
@@ -26,7 +27,7 @@ public class Venta {
     private MetodoEnum metodoDePago;
     private Date fechaDeCompra;
 
-    @Builder.Default
-    @OneToMany(mappedBy = "venta", cascade = CascadeType.ALL)
-    private Set<Entradas> entradas = new HashSet<>();
+    @ManyToOne
+    @JoinColumn(name = "juego_id", nullable = false)
+    private Juegos juego;
 }
