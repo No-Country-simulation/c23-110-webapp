@@ -5,7 +5,9 @@ type AppContextProps = {
     state: AppState,
     dispatch: Dispatch<AppActions>,
     loading: boolean,
-    setLoading: (loading: boolean)=>void
+    setLoading: (loading: boolean)=>void,
+    section: string, 
+    setSection: (s: string)=>void
 }
 type ContextProviderProps = {
     children: React.ReactNode
@@ -16,11 +18,13 @@ export const AppContext = createContext<AppContextProps>(null!)
 export function AppProvider({ children }: ContextProviderProps){
     const [state, dispatch] = useReducer(appReducer, initialValue)
     const [loading, setLoading] = useState(false)
+    const [section, setSection] = useState('/')
 
     return (
         <AppContext.Provider value={{
             state, dispatch, 
-            loading, setLoading
+            loading, setLoading,
+            section, setSection
         }}>
             {children}
         </AppContext.Provider>

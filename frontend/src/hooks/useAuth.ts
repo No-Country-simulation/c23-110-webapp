@@ -12,7 +12,7 @@ type useAuthFuncUser = {
 }
 
 export default function useAuth(){
-    const { state, dispatch, loading, setLoading } = useContext(AppContext)
+    const { state, dispatch, loading, setLoading, section, setSection } = useContext(AppContext)
 
     // Validar request
     const authRQ = async ({ apiRQ, info }: useAuthFuncUser)=>{
@@ -40,7 +40,7 @@ export default function useAuth(){
     // Validar usuario
     const authUser = async({ user, pass }: useAuthFuncProps)=>{
         const dataUpdate = {username: user, passwors: pass}
-        const auth = await authRQ({ apiRQ: 'https://cbec-2607-fea8-5864-4000-f0c3-2a2d-d199-6dbc.ngrok-free.app/api/login',
+        const auth = await authRQ({ apiRQ: 'https://d65a-2607-fea8-5864-4000-1d9e-5142-70af-802.ngrok-free.app/api/login',
                                     info: dataUpdate})
         
         if (auth.validate) {
@@ -55,12 +55,12 @@ export default function useAuth(){
         const dataUpdate = { nombre: user, 
                             contrasena: pass, 
                             rol: role }
-        const auth = await authRQ({apiRQ: 'https://cbec-2607-fea8-5864-4000-f0c3-2a2d-d199-6dbc.ngrok-free.app/api/usuarios',
+        const auth = await authRQ({apiRQ: 'https://d65a-2607-fea8-5864-4000-1d9e-5142-70af-802.ngrok-free.app/api/usuarios',
                                     info: dataUpdate})
 
         return auth.validate
     }
     
     // Retorno de valores
-    return { authUser, addEmp, setLoading, dispatch, state, loading }
+    return { authUser, addEmp, setLoading, dispatch, setSection, state, loading, section }
 }

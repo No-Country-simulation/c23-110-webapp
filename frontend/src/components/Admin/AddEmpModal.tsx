@@ -1,7 +1,7 @@
 import { useState } from "react";
-import useAuth from "../../../hooks/useAuth";
+import useAuth from "../../hooks/useAuth";
 import { ArrowPathIcon } from "@heroicons/react/24/solid";
-import { useToast } from "../../../contexts/ToastifyContext";
+import { useToast } from "../../contexts/ToastifyContext";
 
 export default function AddEmpModal() {
     const { notifyError, notifySuccess } = useToast()
@@ -89,6 +89,5 @@ export default function AddEmpModal() {
         'Añadir Usuario'}
       </button>
     </form>
-  );
+  )
 }
-

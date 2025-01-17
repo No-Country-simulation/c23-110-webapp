@@ -10,10 +10,10 @@ export type AppActions =
     {type: 'auth-login', payload: {user: AppState['user'], id: AppState['id'], role: AppState['role']}}
 
 export const initialValue: AppState =  {
-    auth: false,
-    id: '',
-    user: '',
-    role: ''
+    auth: true,
+    id: '1',
+    user: 'Andres',
+    role: 'admin'
 } 
 
 export function appReducer(
