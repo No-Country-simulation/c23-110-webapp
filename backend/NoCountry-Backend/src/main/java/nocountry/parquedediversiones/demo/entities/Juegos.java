@@ -13,7 +13,6 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Builder
 @Table(name = "juegos")
 public class Juegos {
 
@@ -31,7 +30,8 @@ public class Juegos {
     @Column(nullable = false)
     private BigDecimal precio;
 
-    @Builder.Default
-    @OneToMany(mappedBy = "juego", cascade = CascadeType.ALL)
-    private Set<Entradas> entradas = new HashSet<>();
+    private Boolean juegoActivo;
+
+/*    @OneToMany(mappedBy = "juegos", cascade = CascadeType.ALL)
+    private Set<Entradas> entradas = new HashSet<>();*/
 }

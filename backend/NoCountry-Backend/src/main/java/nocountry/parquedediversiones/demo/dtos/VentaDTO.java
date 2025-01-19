@@ -1,12 +1,10 @@
 package nocountry.parquedediversiones.demo.dtos;
 
 import lombok.*;
-import nocountry.parquedediversiones.demo.entities.Entradas;
 import nocountry.parquedediversiones.demo.entities.Venta;
 import nocountry.parquedediversiones.demo.enums.MetodoEnum;
 
-import java.util.Date;
-import java.util.HashSet;
+import java.time.LocalDateTime;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -16,8 +14,8 @@ import java.util.stream.Collectors;
 public class VentaDTO {
     private Long id;
     private MetodoEnum metodoDePago;
-    private Date fechaDeCompra;
-    private Set<EntradasDTO> entradas = new HashSet<>();
+    private LocalDateTime fechaDeCompra;
+    private Set<EntradasDTO> entradas;
 
     public VentaDTO(Venta venta) {
         this.id = venta.getId();

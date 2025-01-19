@@ -5,6 +5,8 @@ import lombok.*;
 import nocountry.parquedediversiones.demo.enums.MetodoEnum;
 import org.hibernate.annotations.GenericGenerator;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.*;
 
 @Setter
@@ -25,9 +27,10 @@ public class Venta {
 //    private Usuario usuario;
 
     private MetodoEnum metodoDePago;
-    private Date fechaDeCompra;
+    private LocalDateTime fechaDeCompra;
+    private BigDecimal precioTotalVenta;
 
-    @ManyToOne
-    @JoinColumn(name = "juego_id", nullable = false)
-    private Juegos juego;
+    @OneToMany(mappedBy = "venta", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<Entradas> entradas = new HashSet<>();
+
 }

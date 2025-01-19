@@ -13,11 +13,13 @@ public class JuegosDTO {
     private String nombre;
     private String horario;
     private BigDecimal precio;
+    private Boolean juegoActivo;
 
     public JuegosDTO(Juegos juegos) {
         this.id = juegos.getId();
         this.nombre = juegos.getNombre();
         this.horario = juegos.getHorario();
         this.precio = juegos.getPrecio();
+        this.juegoActivo = juegos.getJuegoActivo();
     }
 }

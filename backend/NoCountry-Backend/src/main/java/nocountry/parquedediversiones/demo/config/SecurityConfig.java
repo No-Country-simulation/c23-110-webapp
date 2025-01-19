@@ -22,8 +22,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                                 .requestMatchers("/api/login").permitAll()  // Permitir login sin autenticación
                                 //.requestMatchers("/api/usuarios").hasRole("ADMIN")
-                                .anyRequest().authenticated()  // Proteger los demás endpoints
-                         //.anyRequest().permitAll()
+                                //.anyRequest().authenticated()  // Proteger los demás endpoints
+                         .anyRequest().permitAll()
                 )
                 .httpBasic(withDefaults())
                 .build();
