@@ -25,13 +25,13 @@ public class EntradasContoller {
     }
 
     @PostMapping
-    public ResponseEntity<Entradas> createEntrada (@RequestBody Entradas entradas) {
-        return ResponseEntity.ok(entradasService.save(entradas));
+    public ResponseEntity<Entradas> createEntrada (@RequestBody EntradasDTO entradasDTO) {
+        return ResponseEntity.ok(entradasService.save(entradasDTO));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Entradas> updateEntrada(@PathVariable Long id, @RequestBody Entradas entradas) {
-        return ResponseEntity.ok(entradasService.update(id, entradas));
+    public ResponseEntity<Entradas> updateEntrada(@PathVariable Long id, @RequestBody EntradasDTO entradasDTO) {
+        return ResponseEntity.ok(entradasService.update(id, entradasDTO));
     }
 
     @DeleteMapping("/{id}")

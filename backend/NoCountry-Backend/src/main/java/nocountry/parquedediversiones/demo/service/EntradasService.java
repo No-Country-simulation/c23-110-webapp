@@ -8,7 +8,7 @@ import java.util.List;
 public interface EntradasService {
     List<EntradasDTO> findAll();
     EntradasDTO findById(Long id);
-    Entradas save (Entradas entradas );
-    Entradas update(Long id, Entradas entradas);
+    Entradas save (EntradasDTO  entradasDTO);
+    Entradas update(Long id, EntradasDTO entradasDTO);
     void deleteById(Long id);
 }

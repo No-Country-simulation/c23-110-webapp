@@ -33,18 +33,28 @@ public class JuegosServiceImpl implements JuegoService {
     }
 
     @Override
-    public Juegos save(Juegos juegos) {
+    public Juegos save(JuegosDTO juegosDTO) {
+        Juegos juegos = new Juegos();
+
+        juegos.setNombre(juegosDTO.getNombre());
+        juegos.setHorario(juegosDTO.getHorario());
+        juegos.setPrecio(juegosDTO.getPrecio());
+        juegos.setJuegoActivo(juegosDTO.getJuegoActivo());
+
         return juegosRepository.save(juegos);
     }
 
     @Override
-    public Juegos update(Long id, Juegos juegos) {
+    public Juegos update(Long id, JuegosDTO juegosDTO) {
 
-        Juegos updateJuegos = juegosRepository.findById(id).orElseThrow(()-> new RuntimeException("No se encontro el juego "+id));
+        Juegos updateJuegos = juegosRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("No se encontró el juego " + id));
 
-        updateJuegos.setNombre(juegos.getNombre());
-        updateJuegos.setHorario(juegos.getHorario());
-        updateJuegos.setPrecio(juegos.getPrecio());
+        updateJuegos.setNombre(juegosDTO.getNombre());
+        updateJuegos.setHorario(juegosDTO.getHorario());
+        updateJuegos.setPrecio(juegosDTO.getPrecio());
+        updateJuegos.setJuegoActivo(juegosDTO.getJuegoActivo());
+
         return juegosRepository.save(updateJuegos);
     }
 

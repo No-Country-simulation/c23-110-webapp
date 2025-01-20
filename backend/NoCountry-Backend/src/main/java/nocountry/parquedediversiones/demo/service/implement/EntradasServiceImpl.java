@@ -36,25 +36,29 @@ public class EntradasServiceImpl implements EntradasService {
     }
 
     @Override
-    public Entradas save(Entradas entradas) {
-        Juegos juegoId = juegosRepository.findById(entradas.getJuego().getId())
-                .orElseThrow(() -> new RuntimeException("Juego no encontrado con ID: " + entradas.getJuego().getId()));
+    public Entradas save(EntradasDTO  entradasDTO) {
+        Juegos juego = juegosRepository.findById(entradasDTO.getJuegos().getId())
+                .orElseThrow(() -> new RuntimeException("Juego no encontrado con ID: " + entradasDTO.getJuegos().getId()));
 
-        entradas.setJuego(juegoId);
+        Entradas entradas = new Entradas();
+        entradas.setCantidad(entradasDTO.getCantidad());
+        entradas.setJuego(juego);
+        entradas.setPrecioTotal(juego.getPrecio().multiply(BigDecimal.valueOf(entradas.getCantidad())));
 
-        entradas.setPrecioTotal(
-                juegoId.getPrecio().multiply(BigDecimal.valueOf(entradas.getCantidad()))
-        );
         return entradasRespository.save(entradas);
     }
 
     @Override
-    public Entradas update(Long id, Entradas entradas) {
-        Entradas updateEntrada = entradasRespository.findById(id).orElseThrow(()-> new RuntimeException("No se encontro el juego "+id));
+    public Entradas update(Long id, EntradasDTO entradasDTO) {
+        Entradas updateEntrada = entradasRespository.findById(id)
+                .orElseThrow(() -> new RuntimeException("No se encontró la entrada " + id));
 
-        updateEntrada.setCantidad(entradas.getCantidad());
-        updateEntrada.setJuego(entradas.getJuego());
-        updateEntrada.setVenta(entradas.getVenta());
+        Juegos juego = juegosRepository.findById(entradasDTO.getJuegos().getId())
+                .orElseThrow(() -> new RuntimeException("Juego no encontrado con ID: " + entradasDTO.getJuegos().getId()));
+
+        updateEntrada.setCantidad(entradasDTO.getCantidad());
+        updateEntrada.setJuego(juego);
+        updateEntrada.setPrecioTotal(juego.getPrecio().multiply(BigDecimal.valueOf(entradasDTO.getCantidad())));
 
         return entradasRespository.save(updateEntrada);
     }

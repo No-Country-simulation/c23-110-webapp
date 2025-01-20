@@ -24,17 +24,17 @@ public class VentaController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Venta> getVentaById(@PathVariable Long id) {
+    public ResponseEntity<VentaDTO> getVentaById(@PathVariable Long id) {
         return ResponseEntity.ok(ventaService.findById(id));
     }
 
     @PostMapping
-    public ResponseEntity<Venta> createVenta(@RequestBody VentaDTO ventaDTO) {
+    public ResponseEntity<VentaDTO> createVenta(@RequestBody VentaDTO ventaDTO) {
         return ResponseEntity.ok(ventaService.save(ventaDTO));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Venta> updateVenta(@PathVariable Long id, @RequestBody Venta venta) {
+    public ResponseEntity<VentaDTO> updateVenta(@PathVariable Long id, @RequestBody VentaDTO venta) {
         return ResponseEntity.ok(ventaService.update(id, venta));
     }
 

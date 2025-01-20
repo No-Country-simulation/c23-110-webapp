@@ -27,13 +27,13 @@ public class JuegosController {
     }
 
     @PostMapping
-    public ResponseEntity<Juegos> createJuegos(@RequestBody Juegos juegos) {
-        return ResponseEntity.ok(juegoService.save(juegos));
+    public ResponseEntity<Juegos> createJuegos(@RequestBody JuegosDTO juegosDTO) {
+        return ResponseEntity.ok(juegoService.save(juegosDTO));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Juegos> updateJuegos(@PathVariable Long id, @RequestBody Juegos juegos) {
-        return ResponseEntity.ok(juegoService.update(id, juegos));
+    public ResponseEntity<Juegos> updateJuegos(@PathVariable Long id, @RequestBody JuegosDTO juegosDTO) {
+        return ResponseEntity.ok(juegoService.update(id, juegosDTO));
     }
 
     @DeleteMapping("/{id}")

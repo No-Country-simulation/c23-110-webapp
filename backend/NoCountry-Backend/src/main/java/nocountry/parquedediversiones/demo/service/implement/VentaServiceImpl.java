@@ -26,26 +26,27 @@ public class VentaServiceImpl implements VentaService {
 
         return ventaRepository.findAll()
                 .stream()
-                .map(venta -> new VentaDTO(
-                        venta
-                )).collect(Collectors.toList());
+                .map(VentaDTO::new
+                ).collect(Collectors.toList());
     }
 
     @Override
-    public Venta findById(Long id) {
-        return ventaRepository.findById(id)
+    public VentaDTO findById(Long id) {
+        Venta venta = ventaRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Venta no encontrada con ID: " + id));
+
+        return new VentaDTO(venta);
     }
 
     @Override
-    public Venta save(VentaDTO ventaDTO) {
+    public VentaDTO save(VentaDTO ventaDTO) {
         Venta venta = new Venta();
         venta.setMetodoDePago(ventaDTO.getMetodoDePago());
         venta.setFechaDeCompra(LocalDateTime.now());
 
         Set<Entradas> guardarEntradas = ventaDTO.getEntradas()
-                .stream().map(
-                        entradasDTO -> {
+                .stream()
+                .map(entradasDTO -> {
                             Optional<Entradas> entradasOpt = entradasRespository.findById(entradasDTO.getId());
                             if (entradasOpt.isPresent()) {
                                 return entradasOpt.get();
@@ -54,21 +55,32 @@ public class VentaServiceImpl implements VentaService {
                             }
                         }
                 ).collect(Collectors.toSet());
+
         venta.setEntradas(guardarEntradas);
 
-        return ventaRepository.save(venta);
+        return new VentaDTO(ventaRepository.save(venta));
     }
 
     @Override
-    public Venta update(Long id, Venta venta) {
-        Venta existingVenta = findById(id);
+    public VentaDTO update(Long id, VentaDTO ventaDTO) {
+        Venta existingVenta = ventaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Venta no encontrada con ID: " + id));
 
-        existingVenta.setMetodoDePago(venta.getMetodoDePago());
-        existingVenta.setFechaDeCompra(venta.getFechaDeCompra());
-        existingVenta.setPrecioTotalVenta(venta.getPrecioTotalVenta());
-        existingVenta.setEntradas(venta.getEntradas());
+        existingVenta.setMetodoDePago(ventaDTO.getMetodoDePago());
+        existingVenta.setPrecioTotalVenta(ventaDTO.getPrecioTotalVenta());
 
-        return ventaRepository.save(existingVenta);
+        existingVenta.setEntradas(ventaDTO.getEntradas().stream()
+                .map(entradasDTO -> {
+                            Optional<Entradas> entradasOpt = entradasRespository.findById(entradasDTO.getId());
+                            if (entradasOpt.isPresent()) {
+                                return entradasOpt.get();
+                            } else {
+                                throw new RuntimeException("Entrada no encontrada con ID: "+entradasDTO.getId());
+                            }
+                        }
+                ).collect(Collectors.toSet()));
+
+        return new VentaDTO(ventaRepository.save(existingVenta));
     }
 
     @Override
