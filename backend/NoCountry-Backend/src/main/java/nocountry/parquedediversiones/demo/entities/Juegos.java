@@ -5,8 +5,6 @@ import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.math.BigDecimal;
-import java.util.HashSet;
-import java.util.Set;
 
 @Setter
 @Getter
@@ -32,6 +30,4 @@ public class Juegos {
 
     private Boolean juegoActivo;
 
-/*    @OneToMany(mappedBy = "juegos", cascade = CascadeType.ALL)
-    private Set<Entradas> entradas = new HashSet<>();*/
 }

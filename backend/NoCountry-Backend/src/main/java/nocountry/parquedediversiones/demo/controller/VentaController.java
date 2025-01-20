@@ -29,8 +29,8 @@ public class VentaController {
     }
 
     @PostMapping
-    public ResponseEntity<Venta> createVenta(@RequestBody Venta venta) {
-        return ResponseEntity.ok(ventaService.save(venta));
+    public ResponseEntity<Venta> createVenta(@RequestBody VentaDTO ventaDTO) {
+        return ResponseEntity.ok(ventaService.save(ventaDTO));
     }
 
     @PutMapping("/{id}")

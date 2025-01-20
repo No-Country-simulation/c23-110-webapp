@@ -8,7 +8,7 @@ import java.util.List;
 public interface VentaService {
     List<VentaDTO> findAll();
     Venta findById(Long id);
-    Venta save(Venta venta);
+    Venta save(VentaDTO venta);
     Venta update(Long id, Venta venta);
     void deleteById(Long id);
 }

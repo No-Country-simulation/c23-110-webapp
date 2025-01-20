@@ -14,7 +14,6 @@ import java.util.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Builder
 @Table(name = "venta")
 public class Venta {
     @Id
@@ -32,5 +31,4 @@ public class Venta {
 
     @OneToMany(mappedBy = "venta", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Entradas> entradas = new HashSet<>();
-
 }
