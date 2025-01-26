@@ -29,7 +29,7 @@ type ButtonOptionNavProps = {
 
 export default function ButtonGeneral({text, Icon, stroke = true, w = "7", func=()=>console.log('click')}: ButtonGeneralProps) {
     return (
-      <button onClick={()=>func()} className="w-full hover:bg-[rgba(255,255,255,.3)] focus:bg-[rgba(255,255,255,.3)] active:scale-95  p-2 rounded-md transition-all duration-200 flex items-center gap-2 text-white font-semibold">
+      <button onClick={()=>func()} className="w-full hover:bg-[rgba(255,255,255,.3)] active:scale-95  p-2 rounded-md transition-all duration-200 flex items-center gap-2 text-white font-semibold">
         {Icon && <Icon className={`w-${w} text-gray-100 ${stroke ? "stroke-current" : "stroke-none"}`} />}
         {text}
       </button>
@@ -112,11 +112,13 @@ export function ButtonOrder({ text }: ButtonOrderProps) {
 }
 
 export function ButtonOptionNav({ text, Icon, color, path, setOpenMenu }: ButtonOptionNavProps){
-  const { setSection } = useAuth()
-
+  const navigate = useNavigate()
   return (
-    <button onClick={()=>setOpenMenu(false)} className="py-1 px-2 w-full flex items-center gap-2 hover:bg-[#F5F5F5] transition-colors duration-100 rounded-lg">
-      {Icon && <Icon onClick={()=>setSection(path)} className={`w-6 ${color}`} />}
+    <button onClick={()=>{
+      setOpenMenu(false)
+      navigate(path)
+      }} className="py-1 px-2 w-full flex items-center gap-2 hover:bg-[#F5F5F5] transition-colors duration-100 rounded-lg">
+      {Icon && <Icon className={`w-6 ${color}`} />}
       {text}
     </button>
   )

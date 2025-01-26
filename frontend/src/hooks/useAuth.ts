@@ -12,7 +12,7 @@ type useAuthFuncUser = {
 }
 
 export default function useAuth(){
-    const { state, dispatch, loading, setLoading, section, setSection } = useContext(AppContext)
+    const { state, dispatch, loading, setLoading, asideOpen, setAsideOpen } = useContext(AppContext)
 
     // Validar request
     const authRQ = async ({ apiRQ, info }: useAuthFuncUser)=>{
@@ -62,5 +62,5 @@ export default function useAuth(){
     }
     
     // Retorno de valores
-    return { authUser, addEmp, setLoading, dispatch, setSection, state, loading, section }
+    return { authUser, addEmp, setLoading, dispatch, state, loading, asideOpen, setAsideOpen }
 }

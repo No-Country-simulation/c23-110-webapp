@@ -9,12 +9,13 @@
     .button-action {
         opacity: 0;
         animation: itemAppearsFromBottom .5s ease-out forwards;
+        animation-delay: .1s;
     }
     .button-action:nth-child(2) {
         animation-delay: .2s;
     }
     .button-action:nth-child(3) {
-        animation-delay: .4s;
+        animation-delay: .3s;
     }
     
     .aside__order--section {
@@ -23,6 +24,9 @@
     }
     .aside__order--section:nth-child(2) {
         animation-delay: .2s;
+    }
+    .page {
+        animation: itemAppearsFromBottom .3s forwards ease-out;
     }
     
     #welcome__page {
@@ -57,4 +61,22 @@
     
     @keyframes typing { from { width: 0; } }
     @keyframes blink-caret { 50% { border-color: transparent; } }
+    @keyframes asideAppears { 
+        from {
+            width: 0px;
+            opacity: 0;
+        }to {
+            width: 260px;
+            opacity: 1;
+        }
+     }
+     @keyframes asideDisappears { 
+        from {
+            width: 260px;
+            opacity: 1;
+        }to {
+            width: 0px;
+            opacity: 0;
+        }
+     }
 }

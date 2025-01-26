@@ -1,0 +1,55 @@
+{
+    "entradas": [
+      {
+        "nombreJuego": "Montaña Rusa Extrema",
+        "cantidadCompras": 150,
+        "fechaCompra": "2024-01-20"
+      },
+      {
+        "nombreJuego": "Rueda de la Fortuna",
+        "cantidadCompras": 85,
+        "fechaCompra": "2024-01-19"
+      },
+      {
+        "nombreJuego": "Montaña Rusa Extrema",
+        "cantidadCompras": 120,
+        "fechaCompra": "2024-01-18"
+      },
+      {
+        "nombreJuego": "Autos Chocadores",
+        "cantidadCompras": 200,
+        "fechaCompra": "2024-01-17"
+      },
+      {
+        "nombreJuego": "Sillas Voladoras",
+        "cantidadCompras": 95,
+        "fechaCompra": "2024-01-16"
+      },
+      {
+        "nombreJuego": "Casa del Terror",
+        "cantidadCompras": 110,
+        "fechaCompra": "2024-01-15"
+      },
+      {
+        "nombreJuego": "Rueda de la Fortuna",
+        "cantidadCompras": 60,
+        "fechaCompra": "2024-01-14"
+      },
+      {
+        "nombreJuego": "Montaña Rusa Extrema",
+        "cantidadCompras": 180,
+        "fechaCompra": "2024-01-13"
+      },
+      {
+        "nombreJuego": "Autos Chocadores",
+        "cantidadCompras": 220,
+        "fechaCompra": "2024-01-12"
+      },
+      {
+        "nombreJuego": "Casa del Terror",
+        "cantidadCompras": 100,
+        "fechaCompra": "2024-01-11"
+      }
+    ]
+  }
+  

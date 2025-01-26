@@ -20,7 +20,7 @@ export default function Index() {
   return (
     <>
         {/*ANIMACION DE SALUDO */}
-        <div className="w-full flex justify-center items-center">
+        <div className="page w-full flex justify-center items-center">
             <h1
                 className="text-3xl font-semibold text-gray-800 font-montserrat max-[539px]:text-2xl"
                 style={{
